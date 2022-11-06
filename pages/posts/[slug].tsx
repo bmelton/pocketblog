@@ -1,6 +1,5 @@
-import { GetServerSideProps } from "next";
 import PocketBase from "pocketbase";
-import blogPost from "../../lib/types/BlogPost";
+import blogPost from "lib/types/BlogPost";
 
 type PostPage = {
   post: blogPost;

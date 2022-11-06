@@ -1,8 +1,8 @@
-import "../styles/globals.css";
+import "styles/globals.css";
 import type { AppContext, AppProps } from "next/app";
 import App from "next/app";
 import PocketBase from "pocketbase";
-import navItem from "../lib/types/NavItem";
+import navItem from "lib/types/NavItem";
 
 type CustomAppProps = Pick<AppProps, "Component" | "pageProps"> & {
   navItems: navItem[];

@@ -1,7 +1,5 @@
-import Link from "next/link";
 import React, { useState } from "react";
-import navItem from "../../types/NavItem";
-// import Logo from "../Logo/Logo";
+import navItem from "lib/types/NavItem";
 import Logo from "lib/components/Logo/Logo";
 
 interface HeaderProps {

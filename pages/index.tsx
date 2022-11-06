@@ -1,9 +1,9 @@
 import Head from "next/head";
 import Image from "next/legacy/image";
-import Header from "../lib/components/Header/Header";
+import Header from "lib/components/Header/Header";
 import PocketBase from "pocketbase";
-import navItem from "../lib/types/NavItem";
-import blogPost from "../lib/types/BlogPost";
+import navItem from "lib/types/NavItem";
+import blogPost from "lib/types/BlogPost";
 
 type HeaderImageProps = {
   url: string;
