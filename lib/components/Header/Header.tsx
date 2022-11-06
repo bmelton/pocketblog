@@ -2,8 +2,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 interface navItem {
-  url: string;
+  slug: string;
   title: string;
+  include_in_header: boolean;
 }
 
 interface HeaderProps {
@@ -13,8 +14,6 @@ interface HeaderProps {
 export const Header = (props: HeaderProps) => {
   const { navItems } = props;
   const [show, setShow] = useState(false);
-
-  console.log(navItems);
 
   return (
     <header>
