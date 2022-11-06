@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React, { useState } from "react";
 import navItem from "../../types/NavItem";
+import Logo from "../Logo/Logo";
+
 interface HeaderProps {
   navItems: navItem[];
 }
@@ -13,11 +15,7 @@ export const Header = (props: HeaderProps) => {
     <header>
       <nav className="border-gray-200 px-4 lg:px-6 py-8">
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl relative">
-          <Link href="/" className="flex items-center">
-            <span className="self-center text-xl font-semibold whitespace-nowrap">
-              Pocketblog
-            </span>
-          </Link>
+          <Logo />
           <div className="flex items-center lg:order-1">
             <button
               data-collapse-toggle="mobile-menu-2"
