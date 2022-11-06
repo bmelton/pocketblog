@@ -2,8 +2,24 @@ import Head from "next/head";
 import Image from "next/legacy/image";
 import Header from "../lib/components/Header/Header";
 import PocketBase from "pocketbase";
+import navItem from "../lib/types/NavItem";
+import blogPost from "../lib/types/BlogPost";
 
-const HeaderImage = ({ url, title }) => {
+type HeaderImageProps = {
+  url: string;
+  title: string;
+};
+
+type PostProps = {
+  post: blogPost;
+};
+
+type HomeProps = {
+  posts: blogPost[];
+  navItems: navItem[];
+};
+
+const HeaderImage = ({ url, title }: HeaderImageProps) => {
   return (
     <div className="relative block center min-w-full w-64 h-64">
       <Image
@@ -18,7 +34,7 @@ const HeaderImage = ({ url, title }) => {
   );
 };
 
-const Post = ({ post }) => {
+const Post = ({ post }: PostProps) => {
   return (
     <div className="mt-8 bg-slate-100 p-4">
       <div className="grid grid-flow-row md:grid-flow-col gap-4">
@@ -39,9 +55,7 @@ const Post = ({ post }) => {
   );
 };
 
-export default function Home(props) {
-  const { posts, navItems } = props;
-
+export default function Home({ posts, navItems }: HomeProps) {
   return (
     <>
       <Header navItems={navItems} />

@@ -1,6 +1,12 @@
+import { GetServerSideProps } from "next";
 import PocketBase from "pocketbase";
+import blogPost from "../../lib/types/BlogPost";
 
-export const PostPage = ({ post }) => {
+type PostPage = {
+  post: blogPost;
+};
+
+export const PostPage = ({ post }: PostPage) => {
   return (
     <div className="h-16">
       <h1>Post</h1>
@@ -10,7 +16,15 @@ export const PostPage = ({ post }) => {
 
 export default PostPage;
 
-export async function getServerSideProps({ params }) {
+interface Params {
+  slug: string;
+}
+
+interface Context {
+  params: Params;
+}
+
+export const getServerSideProps = async ({ params }: Context) => {
   const client = new PocketBase(process.env.NEXT_POCKETBASE_URL);
 
   function buildImage(item: any) {
@@ -30,7 +44,7 @@ export async function getServerSideProps({ params }) {
   const tableName = `${prefix}posts`;
   const { items } = await client.records.getList(tableName, 1, 1, {
     expand: "author",
-    filter: `slug = "${params?.slug}"`,
+    filter: `slug = "${params.slug}"`,
   });
 
   return {
@@ -38,4 +52,4 @@ export async function getServerSideProps({ params }) {
       post: normalizeItem(items[0]),
     },
   };
-}
+};
