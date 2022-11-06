@@ -2,13 +2,13 @@ import "../styles/globals.css";
 import type { AppContext, AppProps } from "next/app";
 import App from "next/app";
 import PocketBase from "pocketbase";
-import { NextPage } from "next";
+import navItem from "../lib/types/NavItem";
 
 type CustomAppProps = Pick<AppProps, "Component" | "pageProps"> & {
-  navItems: any;
+  navItems: navItem[];
 };
 
-export const CustomApp: NextPage = ({
+export const CustomApp = ({
   Component,
   pageProps,
   navItems,

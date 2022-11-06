@@ -1,12 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-
-interface navItem {
-  slug: string;
-  title: string;
-  include_in_header: boolean;
-}
-
+import navItem from "../../types/NavItem";
 interface HeaderProps {
   navItems: navItem[];
 }
