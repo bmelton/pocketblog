@@ -71,14 +71,14 @@ export const Header = (props: HeaderProps) => {
           >
             <ul className="flex flex-col mt-4 font-medium lg:flex-row lg:space-x-8 lg:mt-0">
               {navItems.map((item, index) => {
-                if (!item.include_in_header) return null;
+                if (!item?.include_in_header) return null;
                 return (
                   <li key={`nav-item=${index}`}>
                     <a
-                      href={`/pages/${item.slug}`}
+                      href={`/pages/${item?.slug}`}
                       className="block py-2 pr-4 pl-3 rounded bg-primary-700 lg:bg-transparent lg:text-primary-700 lg:p-0 "
                     >
-                      {item.title}
+                      {item?.title}
                     </a>
                   </li>
                 );
