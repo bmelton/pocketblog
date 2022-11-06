@@ -1,5 +1,5 @@
 import PocketBase from "pocketbase";
-import blogPost from "lib/types/BlogPost";
+import { blogPost } from "lib/types";
 
 type PostPage = {
   post: blogPost;

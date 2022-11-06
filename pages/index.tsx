@@ -2,8 +2,8 @@ import Head from "next/head";
 import Image from "next/legacy/image";
 import Header from "lib/components/Header/Header";
 import PocketBase from "pocketbase";
-import navItem from "lib/types/NavItem";
-import blogPost from "lib/types/BlogPost";
+import { navItem, blogPost } from "lib/types";
+import Footer from "lib/components/Footer/Footer";
 
 type HeaderImageProps = {
   url: string;
@@ -59,7 +59,7 @@ export default function Home({ posts, navItems }: HomeProps) {
   return (
     <>
       <Header navItems={navItems} />
-      <div className="container mx-auto">
+      <div className="mx-auto max-w-screen-xl px-4 xl:px-0">
         <Head>
           <title>Pocketblog</title>
           <meta
@@ -75,23 +75,7 @@ export default function Home({ posts, navItems }: HomeProps) {
           ))}
         </main>
 
-        <footer className="mt-12">
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by{" "}
-            <span>
-              <Image
-                src="/vercel.svg"
-                alt="Vercel Logo"
-                width={72}
-                height={16}
-              />
-            </span>
-          </a>
-        </footer>
+        <Footer navItems={navItems} />
       </div>
     </>
   );
