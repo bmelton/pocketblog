@@ -4,6 +4,7 @@ import PocketBase from "pocketbase";
 import { navItem, blogPost } from "lib/types";
 import Footer from "lib/components/Footer/Footer";
 import Post from "lib/components/Blog/Post";
+import normalizeBlogPost from "lib/utils/normalizeBlogPost";
 
 type HomeProps = {
   posts: blogPost[];
@@ -39,25 +40,14 @@ export default function Home({ posts, navItems }: HomeProps) {
 export async function getServerSideProps() {
   const client = new PocketBase(process.env.NEXT_POCKETBASE_URL);
 
-  function buildImage(item: any) {
-    if (!item?.headerImage) return null;
-    const host = process.env.NEXT_POCKETBASE_URL;
-    const img = `${host}/api/files/${item["@collectionId"]}/${item?.id}/${item?.headerImage}`;
-    return img;
-  }
-  function normalizeItem(item: any) {
-    const obj = { ...item };
-    obj.headerImageUrl = buildImage(item);
-    return obj;
-  }
-
   // Set up the table query
   const prefix = process.env.NEXT_POCKETBASE_PREFIX;
   const tableName = `${prefix}posts`;
   const { items } = await client.records.getList(tableName, 1, 20, {});
+  // TODO: Update these types (see normalizeBlogPost.ts)
   return {
     props: {
-      posts: items.map((item) => normalizeItem(item)),
+      posts: items.map((item) => normalizeBlogPost(item)),
     },
   };
 }

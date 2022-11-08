@@ -1,15 +1,32 @@
 import PocketBase from "pocketbase";
-import { blogPost } from "lib/types";
+import { blogPost, navItem } from "lib/types";
+import Header from "lib/components/Header/Header";
+import Footer from "lib/components/Footer/Footer";
+import HeaderImage from "lib/components/Header/HeaderImage";
 
 type PostPage = {
   post: blogPost;
+  navItems: navItem[];
 };
 
-export const PostPage = ({ post }: PostPage) => {
+export const PostPage = ({ post, navItems }: PostPage) => {
+  console.log(post);
   return (
-    <div className="h-16">
-      <h1>Post</h1>
-    </div>
+    <>
+      <Header navItems={navItems} />
+      <div className="mx-auto max-w-screen-xl px-4 xl:px-0">
+        <h1 className="text-3xl font-bold">{post.title}</h1>
+        <HeaderImage
+          url={post.headerImageUrl}
+          title={post.title}
+          className="my-4"
+        />
+        <p className="">{post.content}</p>
+      </div>
+      <div className="mx-auto max-w-screen-xl px-4 xl:px-0">
+        <Footer navItems={navItems} />
+      </div>
+    </>
   );
 };
 
