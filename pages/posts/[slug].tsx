@@ -4,6 +4,7 @@ import Header from "lib/components/Header/Header";
 import Footer from "lib/components/Footer/Footer";
 import HeaderImage from "lib/components/Header/HeaderImage";
 import normalizeBlogPost from "lib/utils/normalizeBlogPost";
+import Head from "next/head";
 
 type PostPage = {
   post: blogPost;
@@ -11,9 +12,12 @@ type PostPage = {
 };
 
 export const PostPage = ({ post, navItems }: PostPage) => {
-  console.log(post);
   return (
     <>
+      <Head>
+        <title>{post.title}</title>
+        <meta name="description" content={post.content.slice(0, 60)} />
+      </Head>
       <Header navItems={navItems} />
       <div className="mx-auto max-w-screen-xl px-4 xl:px-0">
         <h1 className="text-3xl font-bold">{post.title}</h1>
