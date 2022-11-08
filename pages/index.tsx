@@ -36,7 +36,7 @@ const HeaderImage = ({ url, title }: HeaderImageProps) => {
 
 const Post = ({ post }: PostProps) => {
   return (
-    <div className="mt-8 bg-slate-100 p-4">
+    <div className="mt-0 bg-slate-100 p-4">
       <div className="grid grid-flow-row md:grid-flow-col gap-4">
         {post.headerImageUrl ? (
           <HeaderImage url={post.headerImageUrl} title={post.title} />
