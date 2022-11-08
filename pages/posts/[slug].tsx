@@ -20,12 +20,12 @@ export const PostPage = ({ post, navItems }: PostPage) => {
       </Head>
       <Header navItems={navItems} />
       <div className="mx-auto max-w-screen-xl px-4 xl:px-0">
-        <h1 className="text-3xl font-bold">{post.title}</h1>
         <HeaderImage
           url={post.headerImageUrl}
           title={post.title}
           className="my-4"
         />
+        <h1 className="text-3xl font-bold">{post.title}</h1>
         <p className="">{post.content}</p>
       </div>
       <div className="mx-auto max-w-screen-xl px-4 xl:px-0">
