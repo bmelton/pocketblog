@@ -1,58 +1,13 @@
 import Head from "next/head";
-import Image from "next/legacy/image";
 import Header from "lib/components/Header/Header";
 import PocketBase from "pocketbase";
 import { navItem, blogPost } from "lib/types";
 import Footer from "lib/components/Footer/Footer";
-
-type HeaderImageProps = {
-  url: string;
-  title: string;
-};
-
-type PostProps = {
-  post: blogPost;
-};
+import Post from "lib/components/Blog/Post";
 
 type HomeProps = {
   posts: blogPost[];
   navItems: navItem[];
-};
-
-const HeaderImage = ({ url, title }: HeaderImageProps) => {
-  return (
-    <div className="relative block center min-w-full w-64 h-64">
-      <Image
-        src={url}
-        alt={title}
-        layout="fill"
-        objectFit="cover"
-        className="aspect-square"
-        priority
-      />
-    </div>
-  );
-};
-
-const Post = ({ post }: PostProps) => {
-  return (
-    <div className="mt-0 bg-slate-100 p-4">
-      <div className="grid grid-flow-row md:grid-flow-col gap-4">
-        {post.headerImageUrl ? (
-          <HeaderImage url={post.headerImageUrl} title={post.title} />
-        ) : null}
-        <div className="flex flex-col mb-1 place-content-center">
-          <a
-            href={`/posts/${post.slug}`}
-            className="text-gray-700 hover:text-blue-500 font-semibold text-2xl"
-          >
-            {post.title}
-          </a>
-          <p>{post.content.slice(0, 280)}</p>
-        </div>
-      </div>
-    </div>
-  );
 };
 
 export default function Home({ posts, navItems }: HomeProps) {
