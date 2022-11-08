@@ -3,6 +3,7 @@ import { blogPost, navItem } from "lib/types";
 import Header from "lib/components/Header/Header";
 import Footer from "lib/components/Footer/Footer";
 import HeaderImage from "lib/components/Header/HeaderImage";
+import normalizeBlogPost from "lib/utils/normalizeBlogPost";
 
 type PostPage = {
   post: blogPost;
@@ -43,18 +44,6 @@ interface Context {
 export const getServerSideProps = async ({ params }: Context) => {
   const client = new PocketBase(process.env.NEXT_POCKETBASE_URL);
 
-  function buildImage(item: any) {
-    if (!item?.headerImage) return null;
-    const host = process.env.NEXT_POCKETBASE_URL;
-    const img = `${host}/api/files/${item["@collectionId"]}/${item?.id}/${item?.headerImage}`;
-    return img;
-  }
-  function normalizeItem(item: any) {
-    const obj = { ...item };
-    obj.headerImageUrl = buildImage(item);
-    return obj;
-  }
-
   // Set up the table query
   const prefix = process.env.NEXT_POCKETBASE_PREFIX;
   const tableName = `${prefix}posts`;
@@ -65,7 +54,7 @@ export const getServerSideProps = async ({ params }: Context) => {
 
   return {
     props: {
-      post: normalizeItem(items[0]),
+      post: normalizeBlogPost(items[0]),
     },
   };
 };
