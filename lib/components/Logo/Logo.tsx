@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const Badge = () => {
   return (
-    <div className="text-xs absolute -top-4 left-28 py-1 px-3 rounded-full z-10 bg-red-600 text-white">
+    <div className="text-xxs absolute -top-2 left-28 py-1 px-3 rounded-full z-10 bg-red-600 text-white">
       Superalpha
     </div>
   );

@@ -8,7 +8,11 @@ module.exports = {
     "./Themes/components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontSize: {
+        xxs: ["0.6rem", "0.6rem"],
+      },
+    },
   },
   plugins: [],
 };
